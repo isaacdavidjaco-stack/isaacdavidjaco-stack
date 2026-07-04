@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fighter Jet City</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="game-shell">
+    <header>
+      <h1>Fighter Jet City</h1>
+    </header>
+    <div class="hud">
+      <div id="score">Score: 0</div>
+      <div id="health">Health: 100</div>
+      <div id="coins">Coins: 0</div>
+      <div id="bombs">Bombs: 0</div>
+      <div id="dowers">Dowers: 100</div>
+      <div id="holtei">Holtei: 0</div>
+      <div id="sidey">Sidey: 0</div>
+      <div id="hackStatus">Hack: off</div>
+    </div>
+    <canvas id="gameCanvas" width="900" height="600"></canvas>
+    <div class="controls">
+      Move: Arrow keys or WASD · Fire: Space · Wand: Q · Sword: X · Bomb: B · Hacks: S · Restart: Enter
+    </div>
+    <div id="message" class="message hidden"></div>
+    <section class="shop">
+      <h2>City Shop</h2>
+      <div class="shop-grid">
+        <button id="buyEmployee">Hire employee<br>100 coins</button>
+        <button id="buyBomb">Buy bomb<br>50 coins</button>
+        <button id="buyWand">Buy wand<br>120 coins</button>
+        <button id="buyBoots">Buy boots<br>130 coins</button>
+        <button id="buyArmor">Buy armor<br>180 coins</button>
+        <button id="buySword">Buy sword<br>140 coins</button>
+        <button id="buyCar">Buy car upgrade<br>200 coins</button>
+        <button id="buyMissile">Buy missile guns<br>150 coins</button>
+        <button id="buyTank">Buy tank support<br>260 coins</button>
+        <button id="buyState">Buy state HQ<br>500 coins</button>
+      </div>
+      <div class="shop-info">
+        <div id="employees">Employees: 0</div>
+        <div id="allies">Allies: 0</div>
+        <div id="jobProgress">Job: 0/10</div>
+        <div id="carUpgrade">Car upgrade: No</div>
+        <div id="missileUpgrade">Missile guns: No</div>
+        <div id="wandStatus">Wand: No</div>
+        <div id="bootsStatus">Boots: No</div>
+        <div id="armorStatus">Armor: No</div>
+        <div id="swordStatus">Sword: No</div>
+        <div id="tankStatus">Tank support: No</div>
+        <div id="stateStatus">State HQ: No</div>
+      </div>
+    </section>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
