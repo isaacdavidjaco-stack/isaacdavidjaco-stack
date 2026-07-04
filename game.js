@@ -625,6 +625,41 @@ buyMissileBtn.addEventListener('click', buyMissile);
 buyTankBtn.addEventListener('click', buyTank);
 buyStateBtn.addEventListener('click', buyState);
 
+// Mobile / touch controls setup
+function setupMobileControls() {
+  const container = document.getElementById('mobileControls');
+  if (!container) return;
+  const buttons = container.querySelectorAll('.m-btn');
+  buttons.forEach((btn) => {
+    const key = btn.dataset.key;
+    const action = btn.dataset.action;
+    const onDown = (e) => {
+      e.preventDefault();
+      if (action) {
+        if (action === 'bomb') useBomb();
+        if (action === 'hack') toggleHack();
+        if (action === 'restart' && state.gameOver) resetGame();
+      } else if (key) {
+        state.keys[key] = true;
+      }
+    };
+    const onUp = (e) => {
+      e && e.preventDefault();
+      if (key) state.keys[key] = false;
+    };
+    btn.addEventListener('touchstart', onDown, { passive: false });
+    btn.addEventListener('touchend', onUp);
+    btn.addEventListener('pointerdown', onDown);
+    btn.addEventListener('pointerup', onUp);
+    btn.addEventListener('pointercancel', onUp);
+    btn.addEventListener('dragstart', (ev) => ev.preventDefault());
+  });
+  // Prevent scrolling when interacting with canvas on touch devices
+  canvas.addEventListener('touchstart', (e) => { if (e.touches.length > 1) e.preventDefault(); }, { passive: false });
+}
+
+setupMobileControls();
+
 window.addEventListener('keydown', (event) => {
   if (event.code === 'Space') {
     state.keys.Space = true;

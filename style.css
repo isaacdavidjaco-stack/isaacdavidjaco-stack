@@ -120,3 +120,54 @@ header h1 {
 .hidden {
   display: none;
 }
+
+/* Mobile controls */
+.mobile-controls {
+  display: none;
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  pointer-events: auto;
+  z-index: 40;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-end;
+}
+.mobile-controls .dpad {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.mobile-controls .dpad-row {
+  display: flex;
+  gap: 6px;
+}
+.mobile-controls .actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  width: 46%;
+}
+.m-btn {
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 12px 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  touch-action: none;
+  user-select: none;
+}
+.m-btn:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 800px) {
+  .mobile-controls { display: flex; }
+  .hud { display: none; }
+  .shop { display: none; }
+  .controls { display: none; }
+  .game-shell { padding-bottom: 140px; }
+}

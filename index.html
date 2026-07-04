@@ -25,6 +25,25 @@
     <div class="controls">
       Move: Arrow keys or WASD · Fire: Space · Wand: Q · Sword: X · Bomb: B · Hacks: S · Restart: Enter
     </div>
+    <!-- Mobile on-screen controls (visible on small screens) -->
+    <div id="mobileControls" class="mobile-controls" aria-hidden="false">
+      <div class="dpad">
+        <button class="m-btn m-up" data-key="ArrowUp" aria-label="Up">▲</button>
+        <div class="dpad-row">
+          <button class="m-btn m-left" data-key="ArrowLeft" aria-label="Left">◀</button>
+          <button class="m-btn m-down" data-key="ArrowDown" aria-label="Down">▼</button>
+          <button class="m-btn m-right" data-key="ArrowRight" aria-label="Right">▶</button>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="m-btn m-fire" data-key="Space" aria-label="Fire">Fire</button>
+        <button class="m-btn m-wand" data-key="KeyQ" aria-label="Wand">Wand</button>
+        <button class="m-btn m-sword" data-key="KeyX" aria-label="Sword">Sword</button>
+        <button class="m-btn m-bomb" data-action="bomb" aria-label="Bomb">Bomb</button>
+        <button class="m-btn m-hack" data-action="hack" aria-label="Hack">Hack</button>
+        <button class="m-btn m-restart" data-action="restart" aria-label="Restart">Restart</button>
+      </div>
+    </div>
     <div id="message" class="message hidden"></div>
     <section class="shop">
       <h2>City Shop</h2>
