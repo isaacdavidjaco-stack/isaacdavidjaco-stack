@@ -644,18 +644,34 @@ function setupMobileControls() {
       }
     };
     const onUp = (e) => {
-      e && e.preventDefault();
+      if (e) e.preventDefault();
       if (key) state.keys[key] = false;
+      btn.classList.remove('active');
     };
-    btn.addEventListener('touchstart', onDown, { passive: false });
-    btn.addEventListener('touchend', onUp);
-    btn.addEventListener('pointerdown', onDown);
-    btn.addEventListener('pointerup', onUp);
-    btn.addEventListener('pointercancel', onUp);
+    const onMovePrevent = (e) => { e.preventDefault(); };
+    btn.addEventListener('touchstart', (ev) => { onDown(ev); btn.classList.add('active'); }, { passive: false });
+    btn.addEventListener('touchend', (ev) => { onUp(ev); });
+    btn.addEventListener('touchcancel', (ev) => { onUp(ev); });
+    btn.addEventListener('touchmove', onMovePrevent, { passive: false });
+    btn.addEventListener('pointerdown', (ev) => { onDown(ev); btn.classList.add('active'); });
+    btn.addEventListener('pointerup', (ev) => { onUp(ev); });
+    btn.addEventListener('pointercancel', (ev) => { onUp(ev); });
+    btn.addEventListener('mousedown', (ev) => { onDown(ev); btn.classList.add('active'); });
+    btn.addEventListener('mouseup', (ev) => { onUp(ev); });
+    btn.addEventListener('mouseleave', (ev) => { onUp(ev); });
     btn.addEventListener('dragstart', (ev) => ev.preventDefault());
   });
-  // Prevent scrolling when interacting with canvas on touch devices
+  // Prevent scrolling when interacting with controls/canvas on touch devices
+  container.addEventListener('touchmove', (e) => { if (e.touches && e.touches.length) e.preventDefault(); }, { passive: false });
   canvas.addEventListener('touchstart', (e) => { if (e.touches.length > 1) e.preventDefault(); }, { passive: false });
+
+  // Ensure keys are released if touch ends outside the button
+  document.addEventListener('touchend', () => {
+    Object.keys(state.keys).forEach((k) => { state.keys[k] = false; });
+  });
+  document.addEventListener('mouseup', () => {
+    Object.keys(state.keys).forEach((k) => { state.keys[k] = false; });
+  });
 }
 
 setupMobileControls();

@@ -129,7 +129,7 @@ header h1 {
   right: 12px;
   bottom: 12px;
   pointer-events: auto;
-  z-index: 40;
+  z-index: 9999;
   display: flex;
   justify-content: space-between;
   gap: 12px;
